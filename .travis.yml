@@ -5,3 +5,13 @@ before_install:
   -  docker build -t ssoodehmotaharii/docker-react -f Dockerfile.dev .
 script:
   -  docker run -e CI=true ssoodehmotaharii/docker-react npm run test
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-2"
+  app: "soodehdocker"
+  env: "Soodehdocker-env"
+  bucket: "elasticbeanstalk-eu-west-2-627355661046"
+  bucket path: "soodehdocker"
+  on:
+     branch: master
+
